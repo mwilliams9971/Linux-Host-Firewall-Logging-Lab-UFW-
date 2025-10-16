@@ -1,0 +1,7 @@
+# Expect: DNS failure (blocked)
+dig google.com @8.8.8.8
+nslookup google.com 1.1.1.1
+
+# Refer to the Egress Control: Block DNS to see why these are blocked
+
+ping -c 2 1.1.1.1
