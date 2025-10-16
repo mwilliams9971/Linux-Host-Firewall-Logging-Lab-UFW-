@@ -1,26 +1,31 @@
 # Linux Host Firewall & Logging Lab (UFW + Journalctl)
 
 ## Description
-Harden a Linux host using **UFW** (Uncomplicated Firewall), enable detailed logging, create/verify custom rules (e.g., **block DNS egress**), and analyze events with `journalctl` and `/var/log/ufw.log`.
-
-## Languages Used
- - Bash
-## Utilities Used
- - **Oracle Virtual Box:** virtual machines running Ubuntu Linux
-
- ##  Lab Stack
-- Ubuntu Server 22.04+ (works on 20.04)
-- UFW, iptables (under the hood), rsyslog
-- Tools: `ping`, `curl`, `dig`/`nslookup`, `journalctl`
+This project demonstrates the setup, configuration, and verification of a firewall on an Ubuntu virtual machine using Uncomplicated Firewall (UFW).
+The goal was to strengthen host-based defenses, document rule enforcement, and validate blocking behavior using real system logs and network tests.
 
 ##  Objectives
-- Default-deny inbound; allow essential services
-- Enforce **egress control** (block DNS as example)
-- Turn on **UFW logging** and validate with real traffic
-- Document tests, findings, and remediation steps
+- Configure a secure virtual network environment using VirtualBox
+- Enable and verify UFW firewall functionality
+- Implement port-based allow rules (22, 80, 443)
+- Block outbound DNS traffic (port 53) and ICMP pings to external addresses
+- Enable logging and analysis of dropped packets
+- Reset and restore firewall configuration to defaults
 
+## Environment Setup
+- **Platform:** Ubuntu 24.04 LTS (running in VirtualBox)
+- **Network Mode:** NAT + Internal Network
+- **Tools Used:** UFW, journalctl, ping, tail, nano
+- **Skills Demonstrated:** Linux administration, network security, log analysis, firewall configuration
 
-
-##  Prereqs
+## Commands Used
 ```bash
-sudo apt update && sudo apt install -y ufw dnsutils curl
+sudo apt update && sudo apt upgrade -y
+sudo ufw enable
+sudo ufw allow 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw deny out to any port 53 proto udp
+sudo ufw logging on
+sudo journalctl -k | grep -i ufw
+sudo ufw reset
