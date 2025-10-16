@@ -29,3 +29,10 @@ sudo ufw deny out to any port 53 proto udp
 sudo ufw logging on
 sudo journalctl -k | grep -i ufw
 sudo ufw reset
+`````
+## Results
+- Firewall enabled and active
+- Allowed ports 22, 80, 443 verified
+- Outbound DNS blocked successfully
+- Logs confirmed blocked traffic
+- Rules reset and restored defaults
