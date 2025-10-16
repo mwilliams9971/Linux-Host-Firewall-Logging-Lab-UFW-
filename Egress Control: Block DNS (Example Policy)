@@ -1,0 +1,6 @@
+# Block outbound DNS. Can replace port 53 with any port to block it.
+sudo ufw deny out to any port 53 proto udp
+sudo ufw deny out to any port 53 proto tcp
+
+# Allows DNS to a trusted IP
+# sudo ufw allow out to 1.1.1.1 port 53 proto udp
