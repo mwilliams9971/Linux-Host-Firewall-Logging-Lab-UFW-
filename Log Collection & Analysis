@@ -1,0 +1,2 @@
+sudo tail -f /var/log/ufw.log
+# sudo tail shows the end of a file. This command will bring up the recently made logs.
