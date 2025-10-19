@@ -1,4 +1,4 @@
-# Linux Host Firewall & Logging Lab (UFW + Journalctl)
+# Linux Host Firewall & Logging Lab
 
 ## Description
 This project demonstrates the setup, configuration, and verification of a firewall on an Ubuntu virtual machine using Uncomplicated Firewall (UFW).
